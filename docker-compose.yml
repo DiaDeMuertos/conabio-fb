@@ -1,0 +1,29 @@
+version: '2.1'
+services:
+  front:
+    build: .
+    image: nodejs
+    container_name: front-conabio
+    volumes:
+    - ./src:/src
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ['node','-v']
+  db:
+    image: mdillon/postgis
+    container_name: db-conabio
+    hostname: db-hostname
+    ports:
+      - '5434:5432'
+    volumes:
+    - ./shapefiles:/shapefiles
+    environment:
+      POSTGRES_PASSWORD: 123
+      POSTGRES_USER: postgres
+      POSTGRES_DB: conabio
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
