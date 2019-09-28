@@ -4,12 +4,14 @@ services:
     build: .
     image: nodejs
     container_name: front-conabio
+    ports:
+      - '3000:3000'
     volumes:
       - ./src:/src
     depends_on:
       db:
         condition: service_healthy
-    command: ['node', '-v']
+    command: ['npm','start']
   db:
     image: mdillon/postgis
     container_name: db-conabio
