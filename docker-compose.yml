@@ -7,7 +7,7 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ./src:/src
+      - ./app:/app
     depends_on:
       db:
         condition: service_healthy

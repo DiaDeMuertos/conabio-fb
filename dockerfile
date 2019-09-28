@@ -1,8 +1,8 @@
 FROM ubuntu:16.04
 
-COPY src /src
+COPY app /app
 
-WORKDIR /src
+WORKDIR /app
 
 RUN apt-get update
 RUN apt -y install curl
