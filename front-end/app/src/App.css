@@ -16,3 +16,11 @@
 .App-link {
   color: #09d3ac;
 }
+
+.button-input {
+  padding-bottom: 10px;
+}
+
+.button-rs {
+  margin-right: 10px;
+}
