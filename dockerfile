@@ -1,8 +1,8 @@
 FROM ubuntu:16.04
 
-COPY app /app
+COPY front-end /front-end
 
-WORKDIR /app
+WORKDIR /front-end
 
 RUN apt-get update
 RUN apt -y install curl
