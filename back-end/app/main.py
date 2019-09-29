@@ -1,4 +1,5 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import psycopg2
 import json
 import os
@@ -10,6 +11,7 @@ FLASK_PORT = os.environ.get('FLASK_PORT')
 FLASK_ENV = os.environ.get('FLASK_ENV')
 
 app = Flask(__name__)
+cors = CORS(app)
 
 """
     helper function que se encarga de construir payload object(area_mayores).
@@ -82,9 +84,9 @@ def basemap(id):
                 cursor.close()
                 connection.close()
             status = "success" if payload != None else "fail"
-            return json.dumps({"payload": payload, "status": status})
+            return jsonify({"payload": payload, "status": status})
     else:
-        return json.dumps({"payload": None, "status": "fail"})
+        return jsonify({"payload": None, "status": "fail"})
 
 
 @app.route('/api/areas/mayores/<area>', methods=['GET'])
@@ -134,9 +136,9 @@ def areas_mayores(area):
                 cursor.close()
                 connection.close()
             status = "success" if payload != None else "fail"
-            return json.dumps({"payload": payload, "status": status})
+            return jsonify({"payload": payload, "status": status})
     else:
-        return json.dumps({"payload": None, "status": "fail"})
+        return jsonify({"payload": None, "status": "fail"})
 
 
 if __name__ == '__main__':
