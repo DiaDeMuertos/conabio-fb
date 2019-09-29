@@ -7,7 +7,7 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ./app:/app
+      - ./front-end:/front-end
     depends_on:
       db:
         condition: service_healthy
