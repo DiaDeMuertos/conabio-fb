@@ -46,7 +46,10 @@ class Map extends Component {
         {/* 
             Arreglos de polionos
          */}
-        {poligonos && poligonos.map(p => <GeoJSON data={p.geojson} />)}
+        {poligonos &&
+          poligonos.map(p => (
+            <GeoJSON data={p.geojson} style={{ color: '#BE4747' }} />
+          ))}
       </LeafletMap>
     );
   }
